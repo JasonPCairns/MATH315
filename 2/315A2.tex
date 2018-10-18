@@ -1,0 +1,106 @@
+\documentclass[11pt,oneside,a4paper]{article}
+\usepackage{mathtools}
+\usepackage{multirow}
+\usepackage{amssymb}
+
+\begin{document}
+\title{315 Assignment 2}
+\author{Jason Cairns - 8092261}
+\date{13-08-18}
+\maketitle
+
+%q1
+\section{}
+%\subsection*{(a)}
+Let $\mathcal{A}$ be the statement form composed of connectives $\to$, and true statement variables, all equivalently denoted $p$, such that $\nu (p)=1$. Then we can show by induction that no matter the ordering of $\to$ and $p$, $\nu (\mathcal{A} ) = 1$;\\
+First, see the trivial base case, $\nu (p)=1$.\\
+Now, assume $\mathcal{B} $ is composed of $p$ and connectives $\to $, and $\nu ( \mathcal{B} ) =1$.\\
+Then we have $\nu ((\mathcal{B} \to p )) = 1$ and $\nu ((p \to \mathcal{B})) = 1$.\\
+Thus by induction we have that $\nu (\mathcal{A})=1$, meaning that negation is not capable of being defined under the set $\{ \to \}$ only. Therefore, $\neg p 
+\nLeftrightarrow \mathcal{A}$ under this set, and $\{ \to \}$ is unable to fit the definition of a complete set, making it incomplete.
+
+%q2
+\section{}
+\subsection*{(a)}
+$x$ is a theorem of $\mathcal{F}_1$, iff $x$ is of the form $AA^{2i}$, for some $i \in \mathbb{N}$
+
+\subsection*{(b)}
+$x$ is a theorem of $\mathcal{F}_2$, iff $x$ is of the form $A^{2^i}$, for some $i \in \mathbb{N}$\\
+To see this, first consider the derivation;\\
+\begin{center}
+$A=A^{2^0}$, $AA=A^{2^1}$, $AAAA=A^{2^2}$, $\dots$, $\underbrace{AA\dots AA}_{2^i}=A^{2^i}$
+\end{center}
+Now suppose $\mathcal{B}_1, \dots, B_n=x$ is a derivation. We show by induction that each $\mathcal{B}_k, \, 1 \leq k \leq n$ is of the required form.\\
+For $k=1$, $\mathcal{B}$ is $A$. So it is of the required form where $i=0$.\\
+For $k > 1$, if $\mathcal{B}_k = A$ we are done. Otherwise, $\mathcal{B}_k$ was obtained from some $\mathcal{B}_l, \, l<k$, from the single rule $x \implies xx$. By our inductive hypothesis, $\mathcal{B}_l = A^{2^i}$. Then $\mathcal{B}_k = A^{2^i}A^{2^i} = A^{2^{i+1}}$.\\
+Thus $\mathcal{B}_k$ has the required form, ending our inductive proof.
+
+%q3
+\section{}
+We first show that $(\mathcal{A} \to \neg \neg \mathcal{A}$ is a tautology with the following truth table:
+\begin{center}
+\begin{tabular}{l|l|l|l}
+\multicolumn{1}{c|}{$\mathcal{A}$} & \multicolumn{1}{c|}{$(\mathcal{A}$} & \multicolumn{1}{c|}{$\to$} & \multicolumn{1}{c}{$\neg \neg \mathcal{A})$} \\ 
+\hline
+\multicolumn{1}{c|}{1} & \multicolumn{1}{c|}{1} & \multicolumn{1}{c|}{1} & \multicolumn{1}{c}{1} \\ 
+\multicolumn{1}{c|}{0} & \multicolumn{1}{c|}{0} & \multicolumn{1}{c|}{1} & \multicolumn{1}{c}{0} \\ 
+\multicolumn{1}{l}{} & \multicolumn{1}{l}{} & \multicolumn{1}{c}{*} &  \\ 
+\end{tabular}
+\end{center}
+so $\nu ((\mathcal{A} \to \neg \neg \mathcal{A})) = 1$\\
+From \textbf{Theorem 2.36} (The Adequacy Theorem for $L$), we have \textbf{Corollary 2.37}; Every tautology is a theorem of $L$. Thus we have $\vdash_L (\mathcal{A} \to \neg \neg \mathcal{A})$\\
+Then by \textbf{Theorem 2.7} (The Deduction Theorem for $L$) we have that $\{ \mathcal{A} \} \vdash_L \neg \neg \mathcal{A}$ iff $\vdash_L (\mathcal{A} \to \neg \neg \mathcal{A})$\\
+Thus $\{ \mathcal{A} \} \vdash_L \neg \neg \mathcal{A}$, without requiring derivation in $L$
+
+%q4
+\section{}
+We first show that $\mathbb{Z}$ is countable. We do this by demonstrating that we can enumerate $\mathbb{Z}$ as $\{ z_n | n \in \mathbb{N} \}$, i.e. there is an onto map $g:\mathbb{N} \mapsto \mathbb{Z}$. Consider the following map:
+\begin{center}
+$g(n) =
+\begin{cases}
+n/2 & \quad \text{if } n \text{ is even}\\
+-(n+1)/2 & \quad \text{if } n \text{ is odd}\\
+\end{cases}$
+\end{center}
+We can show this is onto: first let $z \in \mathbb{Z}$. We can now show that there exists $n \in \mathbb{N}$ such that $g(n)=z$. Choose $n=g^{-1}(z)$, where
+\begin{center}
+$g^{-1}(z) =
+\begin{cases}
+2z & \quad \text{if } z > 0\\
+-2z+1 & \quad \text{if } z \leq 0\\
+\end{cases}$
+\end{center}
+
+and so $g(g^{-1}(z))=z$. So for all $z \in \mathbb{Z}$, there exists $n \in \mathbb{N}$ such that $g(n)=z$. Hence, $\mathbb{Z}$ is countable.\\
+Now consider some bijective encoding for each $z \in \mathbb{Z}$ as a string of symbols, represented by the set $Z$. Decimal representation of a string of digits is suitable. Then by \textbf{Proposition 2.30}, the set $Z^*$ of all finite non-empty strings of symbols from $Z$ is countable.\\
+The encoding is bijective, so upon being applied inversely, we will have the same property of countability for the set of all finite subsets of $\mathbb{Z}$
+
+%q5
+\section{}
+\subsection*{(a)}
+We have from \textbf{Theorem 2.36} (The Adequacy Theorem for $L$), \textbf{Corollary 2.3.7}, that every tautology is a theorem of $L$.\\
+Hence we have that $\Sigma \vdash_L A$.\\
+ Therefore there does exist a wff $A$ such that $\Sigma \vdash_L A$ and $\Sigma \vdash_L \neg A$, going against the definition of consistency, \textbf{Definition 2.16}.\\
+Thus $\Sigma$ is inconsistent.
+
+\subsection*{(b)}
+From \textbf{Lemma 2.20}, we have that if $\Sigma \nvdash_L \mathcal{A}$, then $\Sigma  \cup \{ \neg \mathcal{A} \}$ is consistent.\\
+From \textbf{Theorem 2.35}, $\Sigma  \cup \{ \neg \mathcal{A} \}$ is consistent iff $\Sigma  \cup \{ \neg \mathcal{A} \}$ is satisfiable.\\
+Hence we have that $(\Sigma \nvdash_L \mathcal{A} \to \Sigma  \cup \{ \neg \mathcal{A} \}$ is satisfiable$)$\\
+\\
+Using \textbf{Theorem 2.35}, $\Sigma  \cup \{ \neg \mathcal{A} \}$ is satisfiable iff $\Sigma  \cup \{ \neg \mathcal{A} \}$ is consistent. If it is consistent, then under \textbf{Definition 2.16}, we do no have both \\$\Sigma \cup \{ \neg \mathcal{A} \} \vdash_L \mathcal{A}$ and $\Sigma  \cup \{ \neg \mathcal{A} \} \vdash_L \neg A$. Because we certainly have \\$\Sigma  \cup \{ \neg \mathcal{A} \} \vdash_L \neg \mathcal{A}$, as $\neg \mathcal{A} \in \Sigma  \cup \{ \neg \mathcal{A} \}$, then we must not have $\Sigma  \cup \{ \neg \mathcal{A} \} \vdash_L \mathcal{A}$.\\
+Therefore $ A \notin \Sigma  \cup \{ \neg \mathcal{A} \}$, else $\Sigma  \cup \{ \neg \mathcal{A} \}$ would entail  $\mathcal{A}$ under $L$. So $\mathcal{A} \notin \Sigma$, as $\Sigma \subseteq \Sigma  \cup \{ \neg \mathcal{A} \}$.\\
+As $\mathcal{A} \notin \Sigma$, then $\Sigma \nvdash_L \mathcal{A}$, because $\mathcal{A}$ wouldn't be a wff, due to not belonging to $\Sigma$, meaning not belonging to $form(L)$.\\
+Hence we have that $(\Sigma  \cup \{ \neg \mathcal{A} \}$ is satisfiable$\to \Sigma \nvdash_L \mathcal{A})$\\
+\\
+Combining these, we have that $\Sigma$ does not entail $A$ iff $\Sigma  \cup \{ \neg A \}$ is satisfiable.
+
+\subsection*{(c)}
+By \textbf{Theorem 2.14} (The Soundness Theorem for $L$), we have that if $\{ \mathcal{A} \} \vdash_L \mathcal{B}$, then $\mathcal{A} \vDash \mathcal{B}$. From \textbf{Definition 2.12}, as $\mathcal{A} \vDash \mathcal{B}$, then for the truth assignment $\nu$ such that $\nu (\mathcal{A})=1$, then $\nu (\mathcal{B})=1$.\\
+Then by \textbf{Definition 2.10}, we have that $\nu ((\mathcal{A} \to \mathcal{B})) = 1$.\\
+Finally, from \textbf{Definition 2.11}, we can call this a tautology, as\\ $\nu ((\mathcal{A} \to \mathcal{B})) = 1$ under every truth assignment $\nu$.
+
+
+
+
+\end{document}

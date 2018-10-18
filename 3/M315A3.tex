@@ -1,0 +1,100 @@
+\documentclass[11pt,oneside,a4paper]{article}
+\usepackage{mathtools}
+\usepackage{multirow}
+\usepackage{amssymb}
+\newcommand{\iassv}{$\mathcal{I}$-assignment $v$ }
+\newcommand{\ient}{\mathcal{I} \vDash_v}
+\newcommand{\ii}{$\mathcal{I}$ }
+\newcommand{\ck}{$\checkmark$}
+\newcommand{\cs}{$\times$}
+\begin{document}
+\title{MATHS 315 Assignment 3}
+\author{Jason Cairns - 8092261}
+\maketitle
+
+%q1
+\section{}
+\subsection*{(a)}
+Let $\mathcal{I}$ be an interpretation with domain $D$, and let $v$ be an $\mathcal{I}$-assignment.\\
+\\
+\textbf{Case 1} \quad If $\mathcal{I} \nvDash_v \forall x \forall y \forall z Axyz$, then it is vacuously true that 
+$$\mathcal{I} \vDash_v (\forall x \forall y \forall z Axyz \to \forall y \exists x \exists z Axyz) $$\\
+\textbf{Case 2} \quad Suppose then that $\mathcal{I} \vDash_v \forall x \forall y \forall z Axyz$. Let $d \in D$.\\
+Since $\mathcal{I} \vDash_v \forall x \forall y \forall z Axyz$, by definition 3.10, 7, for any $d_1, d_2, d_3 \in D$,
+$$\mathcal{I} \vDash_{v \frac{d_1}{x} \frac{d_2}{y} \frac{d_3}{z}}Axyz$$
+But $v\, \frac{d_1}{x} \frac{d_2}{y} \frac{d_3}{z} = v\, \frac{d_2}{y} \frac{d_1}{x} \frac{d_3}{z}$\\
+\\
+Since we have $D$ as a non-empty set, then there exists some $d_1$ and $d_3$, such that
+$$\mathcal{I} \vDash_{v\, \frac{d_2}{y} \frac{d_1}{x} \frac{d_3}{z}}$$
+So by definition 3.10,8, 
+$$\mathcal{I} \vDash_{v \frac{d_2}{y}} \exists x \exists z Axzy$$
+And since $d_2$ was chosen arbitrarily, we have that
+$$\mathcal{I} \vDash_v \forall y \exists x \exists z Axyz$$
+Therefore, by definition 3.10, 5, 
+$$\mathcal{I} \vDash_v (\forall x \forall y \forall z Axyz \to \forall y \exists x \exists z Axyz)$$
+Which, as $v$ and $\mathcal{I}$ were chosen arbitrarily, by definitions 3.12, 3.14, gives that
+$$(\forall x \forall y \forall z Axyz \to \forall y \exists x \exists z Axyz)$$ is logically valid.
+
+\subsection*{(b)}
+The predicate form
+$$(\forall x \exists y Bxy \to \forall y Byy)$$
+is not logically valid.\\
+\\
+Let $\mathcal{I}$ be the interpretation with domain $\mathbb{N}$, with $B^\mathcal{I}(m,n)$ holding iff $m<n$. Let $v$ be an $\mathcal{I}$-assignment. For every $m \in \mathbb{N}$, $B^\mathcal{I}(m,m+1)$ holds, so for any $v$ we have $\mathcal{I} \vDash_{v \frac{m}{x} \frac{m+1}{y}} Bxy$. Thus by definition 3.10,8, $\mathcal{I} \vDash_v \forall x \exists y Bxy$.\\
+There is no $n \in \mathbb{N}$ for which $B^\mathcal{I}(n,n)$ holds, so here is no $n$ for which $\mathcal{I} \vDash_{v \frac{n}{y}}Byy$, so by definition 3.10, 7, $\mathcal{I} \nvDash \forall Byy$. Therefore, by definition 3.10,5, $\mathcal{I} \nvDash_v (\forall x \exists y Bxy \to \forall y Byy)$. Thus by definitions 3.12, 3.14, $(\forall x \exists y Bxy \to \forall y Byy)$ is not logically valid.
+
+\section{}
+\subsection*{(a)}
+\textbf{Case 1} \quad If $\mathcal{I} \nvDash A$, then by definition 3.10,5, $\mathcal{I} \vDash_v (A \to \exists A)$, and so $A \Rightarrow \exists A$.\\
+\textbf{Case 2} \quad Suppose then that $\mathcal{I} \vDash A$. Then for every \iassv,  $\ient A$ in every interpretation \ii of $\mathcal{L}$, by definitions 3.12, 3.14. Consider $v(x)=d$ for some $d \in D$. Then we have $\mathcal{I}\vDash_{v \frac{d}{x}} A$ for some $d \in D$. As $\mathcal{I} \vDash A$, this is alid. Be definition 3.10, 8, and as $D$ is non-empty, this is equivalent to $\ient \exists x A$. Thus, $A \Rightarrow \exists A$.
+
+\subsection*{(b)}
+Let $A^\mathcal{I}(x)$ be the unary supremum predicate with domain $D$, that is, $\forall d \in D, \, d \leq x$.\\
+Set $D$ to some finite partially ordered set, with cardinality $>$ 1.\\
+We have for any \iassv that, based on the properties of $D$, $\mathcal{I} \vDash _{v \frac{e}{x}} Ax$ for some $e \in D$, as every finite, non-empty partially ordered set has some element that exists as the supremum.\\
+Now, consider the \iassv such that, for all $d \in D$,
+\[ v(x) =
+  \begin{cases}
+    \text{Sup($D$)}      & \quad \text{if } x \neq \text{Sup($D$)}\\
+    \text{Inf($D$)}  & \quad \text{if } x = \text{ Sup($D$)}
+  \end{cases}
+\]
+Therefore $\mathcal{I} \nvDash_v Ax$\\
+Thus we have that $\exists x Ax \nRightarrow Ax$.
+
+\section{}
+\subsection*{(a)}
+\subsubsection*{i}
+$$(\exists z \forall x (Axy \to Bz) \vee \exists z Axz)\left(\frac{fzy}{x}\right) = (\exists z \forall x (Axy \to Bz) \vee \exists z Afzyz)$$
+\subsubsection*{ii}$$((\exists x \forall y Axy \to Ayy) \to \forall y (Afxyz \wedge Bz))\left(\frac{fzy}{x}\right)$$$$ = (\exists x \forall y Axy \to Ayy) \to \forall y (Affzyyz \wedge Bz))$$
+
+\subsection*{(b)}
+\begin{center}
+\begin{tabular}{|c|c|c|}
+\hline
+z for x & \cs & \ck \\
+x for y & \cs & \cs \\
+y for z & \ck & \cs \\
+z for y & \cs & \ck \\
+fxz for x & \cs & \ck \\
+fygz for x & \cs & \cs \\
+\hline
+\end{tabular}
+\end{center}
+
+\section{}
+\subsection*{(a)}
+\begin{align*}
+&1. \quad (B \to A) \quad \quad \quad \quad \quad \quad &\text{Hypothesis}\\
+&2. \quad (A \to (\neg A \to \neg B) &\text{Tautology Instance}\\
+&3. \quad (\neg A \to \neg B) &\text{1, 2, Modus Ponens}\\
+&4. \quad ((\neg A \to \neg B) \to (( \neg A \to B) \to A)) &\text{K3}\\
+&5. \quad ((\neg A \to B) \to A) &\text{3, 4, Modus Ponens}\\
+&6. \quad \forall x ((\neg A \to B) \to A) &\text{5, Generalisation}
+\end{align*}
+
+\subsection*{(b)}
+No - by Theorem 4.12 (The Deduction Theorem for $K_\mathcal{L}$), we can deduce $$\vdash_{K_\mathcal{L}} ((B \to A) \to \forall x ((\neg A \to B) \to A))$$ from $$\{ (B \to A) \} \vdash_{K_\mathcal{L}} \forall x ((\neg A \to B) \to A)$$ iff when generalisation is used, it is not used on a free variable. Here, generalisation was applied on $x$, which may be a free variable in $(B \to A)$.
+
+
+\end{document}

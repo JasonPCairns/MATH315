@@ -1,0 +1,75 @@
+\documentclass[11pt,oneside,a4paper]{article}
+\usepackage{mathtools}
+\usepackage{multirow}
+\usepackage{amssymb}
+\newcommand{\iassv}{$\mathcal{I}$-assignment $v$ }
+\newcommand{\ient}{\mathcal{I} \vDash_v}
+\newcommand{\ii}{$\mathcal{I}$ }
+\newcommand{\ck}{$\checkmark$}
+\newcommand{\cs}{$\times$}
+\begin{document}
+\title{MATHS 315 Assignment 4}
+\author{Jason Cairns - 8092261}
+\maketitle
+
+%q1
+\section{}
+\subsection*{(a)}
+
+\begin{align*}
+&1. \quad (\forall x \neg Ax \to \neg Ax) \quad \quad \quad \quad \quad \quad &\text{K4}\\
+&2. \quad ((\forall x \neg Ax \to \neg Ax) \to (Ax \to \neg \forall x \neg Ax)) \quad \quad \quad \quad \quad \quad &\text{Tautology Instance}\\
+&3. \quad Ax \quad \quad \quad \quad \quad \quad &\text{Hypothesis}\\
+&4. \quad (Ax \to \neg \forall x \neg Ax) \quad \quad \quad \quad \quad \quad &\text{1,2 Modus Ponens}\\
+&5. \quad \neg \forall x \neg Ax \quad \quad \quad \quad \quad \quad &\text{3,4 Modus Ponens}\\
+&6. \quad \exists x  Ax  &\text{5, Abbreviation}
+\end{align*}
+
+\subsection*{(b)}
+We have shown that $\{Ax\} \vdash_{K_L} \exists x Ax$. Therefore we may add a hypothesis $Bx$ such that $\{Ax, Bx\} \vdash_{K_L} \exists x Ax$. As $x$ was not generalised over as a free variable (no generalisation was used at all in the derivation), we have by the deduction theorem that $\{Ax\} \vdash_{K_L} (Bx \to \exists x  Ax)$
+
+
+
+\section{}
+As $\Sigma \cup \{ (A \vee (B \wedge C) \}$ is a consistent set of closed wffs, by theorem 4.20, there is some model $\mathcal{I}$ such that $\mathcal{I} \vDash D$ for every $D \in \Sigma \cup \{ (A \vee (B \wedge C) \}$, by definition 4.10.\\
+Therefore the model $\mathcal{I} \vDash (A \vee (B \wedge C)$, this being an abbreviation for $\mathcal{I} \vDash_v (\neg A \to (B \wedge C)$ for every $\mathcal{I}$-assignment $v$. By Definition 3.10, 5, we have that $\mathcal{I} \nvDash_v \neg A$ or $\mathcal{I} \vDash_v (B \wedge C)$\\
+iff $\mathcal{I} \vDash_v A$, due to $A$ being derived from a closed, consistent set of wffs, or $\mathcal{I} \vDash_v B$ and $\mathcal{I} \vDash_v C$.\\
+So either $\mathcal{I}$ is a model for $\Sigma \cup \{ A \}$ or $\Sigma \cup \{ B \}$.\\
+As $\Sigma \cup \{ A \}$ has a model, and is a closed set of wffs, it is consistent, by proposition 4.18. Conversely, the same is true of $\Sigma \cup \{ B \}$. So either $\Sigma \cup \{ A \}$ or $\Sigma \cup \{ B \}$ is consistent.
+
+\section{}
+\subsection*{(a)}
+G1. $\forall x (Px \vee Lx)$\\
+G2. $\neg \exists x (Px \wedge Lx)$
+\subsection*{(b)}
+G3. $\exists x Px$\\
+G4. $\exists y Ly$
+\subsection*{(c)}
+G5. $(((((((((Ll_1 \wedge Ll_2) \wedge \neg E l_1 l_2) \wedge Pp_1) \wedge Pp_2) \wedge Il_1p_1) \wedge Il_1p_2) \wedge Il_2p_1) \wedge Il_2p_2) \to (Ep_1p_2))$
+\subsection*{(d)}
+G6. $(((Pp_1 \wedge Ll_2) \wedge \neg Ep_1p_2)\to \exists l((Ll \wedge Ilp_1) \wedge Ilp_2))$
+\subsection*{(e)}
+If $\mathcal{I}$ is a normal model of $S$ with domain $D$ and $p_1$ and $p_2$ are points of $\mathcal{I}$ (in other words, $p_1, p_2 \in D$ and $P^\mathcal{I}p_1, P^\mathcal{I}p_2$ both hold and $p_1 \neq p_2$) then there is a unique $l \in D$ such that
+$L^\mathcal{I}, I^\mathcal{I}lp_1$ and $I^\mathcal{I}lp_2$ all hold.\\
+As $\mathcal{I}$ is a normal model, it must satisfy axioms G1 - G6, as well as K1 - K5 and E1 - E3, with E interpreted as equality. \\
+Given two unique points $p_1$ and $p_2$, by axiom G6 we must have under the normal model at least one line $l$ incident with both points, such that $L^\mathcal{I}, I^\mathcal{I}lp_1$ and $I^\mathcal{I}lp_2$ all hold.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\end{document}

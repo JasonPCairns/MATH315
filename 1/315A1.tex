@@ -1,0 +1,72 @@
+\documentclass[11pt,oneside,a4paper]{article}
+\usepackage{mathtools}
+\usepackage{multirow}
+
+\begin{document}
+\title{MATHS 315 Assignment 1}
+\author{Jason Cairns - 8092261}
+\date{29-07-18}
+\maketitle
+
+%q1
+\section{}
+
+\begin{align*}
+(\neg p \wedge (p \vee q )) &\iff (( \neg p \wedge p ) \vee (\neg p \wedge q )) &\textit{Distributive}\\
+&\iff  (( \neg p \wedge q ) \vee (\neg p \wedge p ))&\textit{Commutative}\\
+&\iff (\neg p \wedge q ) &\textit{Contradiction}
+\end{align*}
+
+%q2
+\section{}
+
+\begin{table}[h]
+\begin{tabular}{cccccccc}
+\hline
+\multicolumn{1}{|c}{$p$} & $q$ & \multicolumn{1}{c|}{$r$} & $(((p \to q)$ & $\wedge$ & \multicolumn{1}{c|}{$(q \to \neg p))$} & \multicolumn{1}{c|}{$\to$} & \multicolumn{1}{c|}{$(p \to \neg r))$} \\ \hline
+\multicolumn{1}{|c}{0} & 0 & \multicolumn{1}{c|}{0} & 1 & 1 & \multicolumn{1}{c|}{1} & \multicolumn{1}{c|}{1} & \multicolumn{1}{c|}{1} \\
+\multicolumn{1}{|c}{0} & 0 & \multicolumn{1}{c|}{1} & 1 & 1 & \multicolumn{1}{c|}{1} & \multicolumn{1}{c|}{1} & \multicolumn{1}{c|}{1} \\
+\multicolumn{1}{|c}{0} & 1 & \multicolumn{1}{c|}{0} & 1 & 1 & \multicolumn{1}{c|}{1} & \multicolumn{1}{c|}{1} & \multicolumn{1}{c|}{1} \\
+\multicolumn{1}{|c}{0} & 1 & \multicolumn{1}{c|}{1} & 1 & 1 & \multicolumn{1}{c|}{1} & \multicolumn{1}{c|}{1} & \multicolumn{1}{c|}{1} \\
+\multicolumn{1}{|c}{1} & 0 & \multicolumn{1}{c|}{0} & 0 & 0 & \multicolumn{1}{c|}{1} & \multicolumn{1}{c|}{1} & \multicolumn{1}{c|}{1} \\
+\multicolumn{1}{|c}{1} & 0 & \multicolumn{1}{c|}{1} & 0 & 0 & \multicolumn{1}{c|}{1} & \multicolumn{1}{c|}{1} & \multicolumn{1}{c|}{0} \\
+\multicolumn{1}{|c}{1} & 1 & \multicolumn{1}{c|}{0} & 1 & 0 & \multicolumn{1}{c|}{0} & \multicolumn{1}{c|}{1} & \multicolumn{1}{c|}{1} \\
+\multicolumn{1}{|c}{1} & 1 & \multicolumn{1}{c|}{1} & 1 & 0 & \multicolumn{1}{c|}{0} & \multicolumn{1}{c|}{1} & \multicolumn{1}{c|}{0} \\ \hline
+ &  &  &  &  &  & * & 
+\end{tabular}
+\end{table}
+From the above truth table, we can see that the statement form $$(((p \to q) \wedge (q \to \neg p)) \to (p \to \neg r))$$ is a tautology.
+
+%q3
+\section{}
+Given the removal of the second commutative law as an axiom, the system of logical laws is still able to generate the law as a theorem, through the following deduction:
+\begin{align*}
+(\mathcal{A} \vee \mathcal{B}) &\iff \neg \neg (\mathcal{A} \vee \mathcal{B}) &\textit{Double Negation}\\
+&\iff \neg (\neg \mathcal{A} \wedge \neg \mathcal{B}) &\textit{De Morgan's}\\
+&\iff \neg (\neg \mathcal{B} \wedge \neg \mathcal{A}) &\textit{First Commutative}\\
+&\iff \neg \neg (\mathcal{B} \vee \mathcal{A}) &\textit{De Morgan's}\\
+&\iff (\mathcal{B} \vee \mathcal{A}) &\textit{Double Negation}
+\end{align*}
+As we have already proven the soundness and adequacy of a system with this logical equivalence in class (the original system), this reduced system then remains sound and adequate.
+
+%q4
+\section{}
+To determine the validity of the argument we construct the following truth table:
+\begin{table}[h]
+\begin{tabular}{|ccc|c|c|c|}
+\hline
+$p$ & $q$ & $r$ & $r$ & $(p \vee (q \to \neg r))$ & $(q \to p)$ \\ \hline
+0 & 0 & 0 & 0 & 1 & 1 \\
+0 & 0 & 1 & 1 & 1 & 1 \\
+0 & 1 & 0 & 0 & 1 & 0 \\
+0 & 1 & 1 & 1 & 0 & 0 \\
+1 & 0 & 0 & 0 & 1 & 1 \\
+1 & 0 & 1 & 1 & 1 & 1 \\
+1 & 1 & 0 & 0 & 1 & 1 \\
+1 & 1 & 1 & 1 & 1 & 1 \\ \hline
+\end{tabular}
+\end{table}
+
+We can see that whenever the conclusion is false, the conjunction of the premises is also false. Conversely, whenever the premises are all true, the conclusion is also true. Hence, the argument is valid
+
+\end{document}
